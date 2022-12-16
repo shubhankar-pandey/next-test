@@ -49,9 +49,13 @@ export async function getStaticPaths() {
 
   return {
     // this property means if all the pages are specified here
-    //  if fallback is false then user will get error in case of imvalid path
+    // if fallback is false then user will get error in case of imvalid path
     // if fallback is true the it will staticlly generate specified params and dnammically generate others
-    fallback:false,
+    // if fallback is set to blocking it will regenerate no of pages with its value and not regenrateextra page every time but cache new value
+    // fallback:false,
+
+    fallback:'blocking',
+
     paths:meetups.map(p=>({
       params:{
         meetupId:p._id.toString()
